@@ -22,7 +22,7 @@ public class Parser {
             String jsonString = jsonObject.toJSONString();
             PrintWriter printWriter = null;
             //String outputPath = "C:\\Users\\shoham\\Java workspace\\Projects\\JSONParser\\outputJsonDocsFinal\\";
-            String fileName = outputDirectory + "//" + jsonObject.get("uri") + ".json";
+            String fileName = outputDirectory + "/" + jsonObject.get("uri") + ".json";
             try {
                 printWriter = new PrintWriter(fileName);
             } catch (FileNotFoundException e) {
