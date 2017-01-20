@@ -1,43 +1,38 @@
-
+package main.java.JsonParser;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import java.io.*;
 import java.util.ArrayList;
 
-/**
- * Created by shoham on 16/12/2016.
- */
 
 public class Parser {
 
 
-    public void splitJSONArrayToFiles(JSONObject a_jsonObject, String outputDirectory) {
+    private void splitJSONArrayToFiles(JSONObject a_jsonObject, String outputDirectory) {
         JSONArray jsonArray = (JSONArray) a_jsonObject.get("subjects");
-        for(int i=0; i < jsonArray.size(); i++)
-        {
-            JSONObject jsonObject = (JSONObject) jsonArray.get(i);
+        for (Object aJsonArray : jsonArray) {
+            JSONObject jsonObject = (JSONObject) aJsonArray;
             String jsonString = jsonObject.toJSONString();
             PrintWriter printWriter = null;
-            //String outputPath = "C:\\Users\\shoham\\Java workspace\\Projects\\JSONParser\\outputJsonDocsFinal\\";
             String fileName = outputDirectory + "/" + jsonObject.get("uri") + ".json";
             try {
                 printWriter = new PrintWriter(fileName);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
+            assert printWriter != null;
             printWriter.println(jsonString);
             printWriter.close();
         }
     }
 
-    public void parseListOfJSONObjects(ArrayList<File> files, String outputDirectory)
+    private void parseListOfJSONObjects(ArrayList<File> files, String outputDirectory)
     {
-        for(int i=0; i< files.size(); i++)
-        {
-            File file = files.get(i);
+        for (File file : files) {
             FileReader fileReader = null;
             try {
                 fileReader = new FileReader(file);
@@ -48,7 +43,7 @@ public class Parser {
             Object obj = null;
             try {
                 obj = parser.parse(fileReader);
-            } catch (org.json.simple.parser.ParseException | IOException e) {
+            } catch (ParseException | IOException e) {
                 e.printStackTrace();
             }
             JSONObject jsonObject = (JSONObject) obj;
@@ -58,10 +53,11 @@ public class Parser {
 
 
 
-    public void getListOfFiles(String directoryName, ArrayList<File> files) {
+    private void getListOfFiles(String directoryName, ArrayList<File> files) {
         File directory = new File(directoryName);
         // get all the files from a directory
         File[] fList = directory.listFiles();
+        if (fList == null) return;
         for (File file : fList) {
             if (file.isFile()) {
                 files.add(file);
@@ -69,6 +65,7 @@ public class Parser {
                 getListOfFiles(file.getAbsolutePath(), files);
             }
         }
+
     }
 
     private void createOutputDirectory(String outputDirectory)
@@ -88,7 +85,7 @@ public class Parser {
         String outputDirectory = args[1];
         Parser parser = new Parser();
         File f = new File(outputDirectory);
-        if (f.isDirectory() == false)
+        if (!f.isDirectory())
         {
             parser.createOutputDirectory(outputDirectory);
         }
