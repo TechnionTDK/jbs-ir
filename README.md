@@ -50,11 +50,9 @@ In order to index the relevant documents with Solr, please follow the next steps
  1. git clone https://github.com/TechnionTDK/jbs-ir.git
  2. git clone https://github.com/TechnionTDK/jbs-text.git
 2. Go to `jbs-ir` directory and create .jar for the JsonParser in jbs-ir using `mvn package` command
- * JsonParser-1.0-jar-with-dependencies.jar will be located in jbs-ir/JsonParser/target/ 
+ 1. JsonParser-1.0-jar-with-dependencies.jar will be located in jbs-ir/JsonParser/target/ 
 3. Go back to Solr home directory and run: `cp jbs-ir/JsonParser/target/JsonParser-1.0-jar-with-dependencies.jar .` 
-4. In order to parse the data from jbs-text into documents run: 
-   `java -jar JsonParser-1.0-jar-with-dependencies.jar <path-to-desired-data-directory> <path-to-output-documents-directory>`
-   For example: Java -jar JsonParser-1.0-jar-with-dependencies.jar jbs-text/old/tanach-json/ documentsForIndexing
+4. In order to parse the data from jbs-text into documents run: `java -jar JsonParser-1.0-jar-with-dependencies.jar <path-to-desired-data-directory> <path-to-output-documents-directory>` (For example: Java -jar JsonParser-1.0-jar-with-dependencies.jar jbs-text/old/tanach-json/ documentsForIndexing)
 5. To index the documents run: `bin/post -c <core-name> <path-to-output-documents-directory>`
 
 
