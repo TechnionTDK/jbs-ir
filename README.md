@@ -4,12 +4,22 @@
 
 The repository contains the following items
 
-* The configured solr folder including the cliend UI
-* JSON parser to extract data from jbs-text repository
-* A java test tool for the ir engine evaluation
-* An explanation how to configure a solr engine locally on new machine
+* Solr configuration files
+  * Velocity UI for searching
+  * solrconfig.xml
+  * managed-schema
+* JSON parser to convert data from `jbs-text` repository to documents for Solr
+* A java test tool for the IR engine evaluation
+* Instructions and documentation for bringing up the search engine on a new machine
 
-For more information go to the wiki page of the repository 
+For more information please visit the wiki page of the repository.
+
+In order to bring up the search engine on a new machine, we need to have the following components integrated
+* Solr 
+* jbs-text repository
+* jbs-ir repository
+* HebMorph
+* Optional - Velocity UI for searching
 
 ##Installing and configuring solr 
 ###Installing solr
