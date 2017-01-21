@@ -1,6 +1,6 @@
 # jbs-ir
 
-##This is a Solr based search engine for the Jewish Bookshelf project 
+##A Solr based search engine for the Jewish Bookshelf project 
 
 The repository contains the following items
 
