@@ -5,23 +5,34 @@ import org.apache.solr.client.solrj.impl.HttpSolrClient;
 
 class JbsIrSolrClient {
 
-    private final String urlString = "http://tdk2.cs.technion.ac.il:8983/solr/jbs-ir/";
+    private String urlString;
     private SolrClient solrClient;
 
-    private static JbsIrSolrClient Instance = new JbsIrSolrClient();
+    private static JbsIrSolrClient Instance = null;
 
     static JbsIrSolrClient getInstance()
     {
+        if (Instance == null)
+        {
+            Instance = new JbsIrSolrClient();
+        }
         return Instance;
     }
 
     private JbsIrSolrClient()
     {
-        solrClient = new HttpSolrClient.Builder(urlString).build();
+
     }
+
 
     SolrClient getSolrClient()
     {
+        solrClient = new HttpSolrClient.Builder(urlString).build();
         return solrClient;
+    }
+
+    void setConnectionString(String connectionString)
+    {
+        urlString = connectionString;
     }
 }

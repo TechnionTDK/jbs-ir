@@ -17,12 +17,15 @@ class JbsIrTestTool
     private JbsIrQueryDebugInfo jbsIrQueryDebugInfo;
     private boolean debugFlag;
     private boolean explainOtherFlag;
+    private String connectionString;
 
-    JbsIrTestTool()
+    JbsIrTestTool(String connectionString)
     {
+        this.connectionString = connectionString;
         debugFlag = false;
         explainOtherFlag = false;
         jbsIrQuery = new JbsIrQuery();
+        JbsIrSolrClient.getInstance().setConnectionString(connectionString);
         solrClient = JbsIrSolrClient.getInstance().getSolrClient();
         jbsIrQueryDebugInfo = new JbsIrQueryDebugInfo();
         jbsIrQueryResult = new JbsIrQueryResult();
@@ -61,10 +64,17 @@ class JbsIrTestTool
 
 
         QueryResponse queryResponse= null;
-        try {
+        try
+        {
             queryResponse = solrClient.query(jbsIrQuery.getSolrQuery());
-        } catch (SolrServerException | IOException e) {
+        }
+        catch (SolrServerException | IOException e)
+        {
             e.printStackTrace();
+        }
+        catch (IllegalStateException e)
+        {
+            System.out.println("Connection to specified host failed. Please enter the Solr core URL.");
         }
 
         jbsIrQueryResult.setResponse(queryResponse, jbsIrQuery.getSolrQuery().getQuery());
@@ -116,6 +126,8 @@ class JbsIrTestTool
                 }
             }
         }
+
+        System.out.println("Result files were created in jar's directory");
 
     }
 }
