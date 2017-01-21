@@ -1,0 +1,8 @@
+
+<div id="results">
+  #foreach($doc in $response.results)
+    #parse("hit.vm")
+  #end
+</div>
+
+
