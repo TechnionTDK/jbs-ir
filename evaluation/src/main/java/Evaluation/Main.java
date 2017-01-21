@@ -1,4 +1,4 @@
-package main.java.Evaluation;
+package Evaluation;
 
 public class Main
 {

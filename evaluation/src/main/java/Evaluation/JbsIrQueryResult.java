@@ -1,4 +1,4 @@
-package main.java.Evaluation;
+package Evaluation;
 
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
