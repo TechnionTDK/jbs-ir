@@ -33,7 +33,7 @@ For more information please visit the wiki page of the repository.
 Before modifying Solr core files we advise you to read [Documents, Fields, and Schema Design](https://cwiki.apache.org/confluence/display/solr/Documents%2C+Fields%2C+and+Schema+Design).
 
 * In the `server/solr/<core name>/conf` directory replace the `managed-schema` file with the one in the repository under `Solr configuration files` directory
-* In the `server/solr/<core name>/conf`directory replace the `solrconfig.xml` file with the one in the repository under `Solr configuration files` directory
+* In the `server/solr/<core name>/conf` directory replace the `solrconfig.xml` file with the one in the repository under `Solr configuration files` directory
 
 ##HebMorph
 ####The text in the index will be in Hebrew, so we need to use an appropriate hebrew analyzer
@@ -46,14 +46,16 @@ To integrate HebMorph into your Solr core follow [SOLR-README.md](https://github
 
 ##Indexing documents from jbs-text using jbs-ir
 In order to index the relevant documents with Solr, please follow the next steps
-1. Go to your Solr home directory and run these commands:
- 1. git clone https://github.com/TechnionTDK/jbs-ir.git
- 2. git clone https://github.com/TechnionTDK/jbs-text.git
-2. Go to `jbs-ir` directory and create .jar for the JsonParser in jbs-ir using `mvn package` command
- 1. JsonParser-1.0-jar-with-dependencies.jar will be located in jbs-ir/JsonParser/target/ 
-3. Go back to Solr home directory and run: `cp jbs-ir/JsonParser/target/JsonParser-1.0-jar-with-dependencies.jar .` 
-4. In order to parse the data from jbs-text into documents run: `java -jar JsonParser-1.0-jar-with-dependencies.jar <path-to-desired-data-directory> <path-to-output-documents-directory>` (For example: Java -jar JsonParser-1.0-jar-with-dependencies.jar jbs-text/old/tanach-json/ documentsForIndexing)
-5. To index the documents run: `bin/post -c <core-name> <path-to-output-documents-directory>`
+* Go to your Solr home directory and run these commands:
+ * git clone https://github.com/TechnionTDK/jbs-ir.git
+ * git clone https://github.com/TechnionTDK/jbs-text.git
+* Go to `jbs-ir` directory and create .jar for the JsonParser in jbs-ir using `mvn package` command
+ * JsonParser-1.0-jar-with-dependencies.jar will be located in jbs-ir/JsonParser/target/ 
+* Go back to Solr home directory and run: `cp jbs-ir/JsonParser/target/JsonParser-1.0-jar-with-dependencies.jar .` 
+* In order to parse the data from jbs-text into documents run:
+ * `java -jar JsonParser-1.0-jar-with-dependencies.jar <path-to-desired-data-directory> <path-to-output-documents-directory>`
+ * (For example: Java -jar JsonParser-1.0-jar-with-dependencies.jar jbs-text/old/tanach-json/ documentsForIndexing)
+* To index the documents run: `bin/post -c <core-name> <path-to-output-documents-directory>`
 
 
 
