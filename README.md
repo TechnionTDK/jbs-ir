@@ -68,3 +68,11 @@ To read more about Velocity, go to [The Apache Velocity Project](http://velocity
 * Copy `browse-resources` under `Solr configuration files` to `server/solr/<core-name>/conf` directory
 * Access the UI at: `http://<machine-name>:<Solr-port>/solr/<core-name>/browse`
  * For example: http://tdk2.cs.technion.ac.il:8983/solr/jbs-ir/browse
+
+##Evaluation tool
+We included an evaluation tool for the solr search engine. 
+In order to use the tool (after cloning this repository) take a look at `execute()` method in `JbsIrTestTool.java` class, this method demonstrates how the tool can be used.
+
+* **Note that the tool expects to receive the url to the core of your solr engine as an argument**
+
+if you want to use the tool in it's default configuration, after running the `mvn package` command, run the created .jar file, that can be found in 'jbs-ir/evaluation/target/evaluation-1.0-jar-with-dependencies.jar
