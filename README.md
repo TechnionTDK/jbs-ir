@@ -26,7 +26,7 @@ For more information go to the wiki page of the repository
 ####The text in the index will be in Hebrew, so we need to use an appropriate hebrew analyzer
 * Read the following wiki to have better understanding of the changes you are going to perform: [Understanding Analyzers, Tokenizers, and Filters](https://cwiki.apache.org/confluence/display/solr/Understanding+Analyzers%2C+Tokenizers%2C+and+Filters)
 * We chose to use the Hebmorph hewbrew analyzer: [Hebmorph github repository](https://github.com/synhershko/HebMorph)
-To integrate Hebmorph into your Solr core follow [SOLR-README.md](https://github.com/synhershko/HebMorph/blob/master/SOLR-README.md) in Hebmorph github repository.
+To integrate Hebmorph into your Solr core follow [SOLR-README.md](https://github.com/synhershko/HebMorph/blob/master/SOLR-README.md) in Hebmorph github repository **or** replace the solrconfig.xml file in `server/solr/<core name>/conf` with the on in `Solr configuration files` in this repository
 
 ###indexing documents:
 1. clone the jbs-text repository
