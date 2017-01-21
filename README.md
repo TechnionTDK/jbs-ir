@@ -6,6 +6,7 @@ The repository contains the following items
 
 * Solr configuration files
   * Velocity UI for searching
+  * browse-resources for Velocity
   * solrconfig.xml
   * managed-schema
 * JSON parser to convert data from `jbs-text` repository to documents for Solr
@@ -19,21 +20,21 @@ For more information please visit the wiki page of the repository.
 * jbs-text repository
 * jbs-ir repository
 * HebMorph
-* Optional - Velocity UI for searching
+* Velocity UI for searching
 
 ##Solr
 ###Installing Solr
 1. Follow this guide to install solr on your machine: [solr installation guide](https://cwiki.apache.org/confluence/display/solr/Installing+Solr)
 2. From the solr directory start solr using `bin/solr start` command
 3. Make sure Solr is running using `bin/solr status` command
-4. Create a new core using `bin/solr create -c <core name>` command (for example: `bin/solr create -c jbs-ir`)
+4. Create a new core using `bin/solr create -c <core-name>` command (for example: `bin/solr create -c jbs-ir`)
 
 ###Configurating Solr
 ####Before indexing documents with Solr, we need to configurate the fields we are going to use
 Before modifying Solr core files we advise you to read [Documents, Fields, and Schema Design](https://cwiki.apache.org/confluence/display/solr/Documents%2C+Fields%2C+and+Schema+Design).
 
-* In the `server/solr/<core name>/conf` directory replace the `managed-schema` file with the one in the repository under `Solr configuration files` directory
-* In the `server/solr/<core name>/conf` directory replace the `solrconfig.xml` file with the one in the repository under `Solr configuration files` directory
+* In the `server/solr/<core-name>/conf` directory replace the `managed-schema` file with the one in the repository under `Solr configuration files` directory
+* In the `server/solr/<core-name>/conf` directory replace the `solrconfig.xml` file with the one in the repository under `Solr configuration files` directory
 
 ##HebMorph
 ####The text in the index will be in Hebrew, so we need to use an appropriate hebrew analyzer
@@ -57,6 +58,13 @@ In order to index the relevant documents with Solr, please follow the next steps
  * (For example: Java -jar JsonParser-1.0-jar-with-dependencies.jar jbs-text/old/tanach-json/ documentsForIndexing)
 * To index the documents run: `bin/post -c <core-name> <path-to-output-documents-directory>`
 
+##Velocity UI for searching
+You can use the Solr Admin UI for running queries, analysis and viewing core details. Please visit [Overview of the Solr Admin UI](https://cwiki.apache.org/confluence/display/solr/Overview+of+the+Solr+Admin+UI) for more information.
 
-
-
+If you wish for a more simplified UI, dedicated for allowing users to run queries, you are welcome to use the Velocity user UI we designed.
+To read more about Velocity, go to [The Apache Velocity Project](http://velocity.apache.org/).
+###Using our Velocity web UI
+* Copy `velocity` under `Solr configuration files` to `server/solr/<core-name>/conf` directory
+* Copy `browse-resources` under `Solr configuration files` to `server/solr/<core-name>/conf` directory
+* Access the UI at: `http://<machine-name>:<Solr-port>/solr/<core-name>/browse`
+ * For example: http://tdk2.cs.technion.ac.il:8983/solr/jbs-ir/browse
