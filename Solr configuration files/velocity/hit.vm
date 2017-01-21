@@ -1,0 +1,61 @@
+
+#set($docId = $doc.getFirstValue($request.schema.uniqueKeyField.name))
+
+## Load Mime-Type List and Mapping
+#parse('mime_type_lists.vm')
+
+
+## Text
+#if($doc.getFieldValue('text'))
+  #set($text = $doc.getFirstValue('text'))
+#else
+  #set($text = "no text")
+#end
+
+
+## Sort out Mime-Type
+#set($ct = $list.get($doc.getFirstValue('content_type').split(";"),0))
+#set($filename = $doc.getFirstValue('resourcename'))
+#set($filetype = false)
+#set($filetype = $mimeExtensionsMap.get($ct))
+#if(!$filetype)
+  #set($filetype = $filename.substring($filename.lastIndexOf(".")).substring(1))
+#end
+#if(!$filetype)
+  #set($filetype = "file")
+#end
+#if(!$supportedMimeTypes.contains($filetype))
+  #set($filetype = "file")
+#end
+
+<div class="result-document">
+  <span class="result-text">
+    <!--<img src="#{url_root}/img/filetypes/${filetype}.png" align="center">-->
+    <b>$text</b>
+  </span>
+
+  <div class="uri">
+    $docId </br>
+  </div>
+
+  #set($pad = "")
+  #foreach($v in $response.response.highlighting.get($docId).get("content"))
+    $pad$esc.html($v).replace("HL_START","<em>").replace("HL_END","</em>")
+    #set($pad = " ... ")
+  #end
+
+</div>
+
+<a href="#" class="debug" onclick='jQuery(this).next().toggle(); return false;'>toggle explain</a>
+<pre style="display: none;">
+    $esc.html($response.getExplainMap().get($doc.getFirstValue('id')))
+</pre>
+
+<a href="#" class="debug" onclick='jQuery(this).next().toggle(); return false;'>show all fields</a>
+<pre style="display:none;">
+  #foreach($fieldname in $doc.fieldNames)
+    <span>$fieldname :</span>
+    <span>#foreach($value in $doc.getFieldValues($fieldname))$esc.html($value)#end</span>
+  #end
+</pre>
+

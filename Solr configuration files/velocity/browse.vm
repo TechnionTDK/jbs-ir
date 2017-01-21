@@ -1,0 +1,34 @@
+<div id="query-box">
+  <form id="query-form" action="#{url_for_home}" method="GET">
+    $resource.find
+    <div class="query-textbox">
+	<input type="text" id="q" name="q" style="width: 50%; height:35px;" value="$!esc.html($request.params.get('q'))"/>
+    </div>
+    <!--<input type="image" class="displayed" src="#{url_for_solr}/admin/file?file=/velocity/img/ic_search_black_24dp_2x.png&contentType=image/png" alt="Submit" width="35"     height="35"/>-->
+    <div id="debug_query" class="debug">
+      <span id="parsed_query">$esc.html($response.response.debug.parsedquery)</span>
+    </div>
+
+    <input type="hidden" name="type" value="#current_type"/>
+    #if("#current_locale"!="")<input type="hidden" value="locale" value="#current_locale"/>#end
+    #foreach($fq in $response.responseHeader.params.getAll("fq"))
+      <input type="hidden" name="fq" id="allFQs" value="$esc.html($fq)"/>
+    #end
+  </form>
+
+  <div id="constraints">
+    #foreach($fq in $response.responseHeader.params.getAll("fq"))
+      #set($previous_fq_count=$velocityCount - 1)
+      #if($fq != '')
+      &gt; $fq<a href="#url_for_filters($response.responseHeader.params.fq.subList(0,$previous_fq_count))">x</a>
+      #end
+    #end
+  </div>
+
+</div>
+
+
+<div id="browse_results">
+  #parse("results.vm")
+</div>
+

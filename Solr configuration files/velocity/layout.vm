@@ -1,0 +1,25 @@
+<html>
+<head>
+  #parse("head.vm")
+</head>
+  <body>
+    <div id="header">
+      <a href="#url_for_home"><img src="#{url_for_solr}/admin/file?file=/velocity/img/Eng_Ver_Blue.png&contentType=image/png" id="TechnionLogo" title="Solr"/></a> $resource.powered_file_search
+    </div>
+
+    #if($response.response.error.code)
+      <div class="error">
+        <h1>ERROR $response.response.error.code</h1>
+        $response.response.error.msg
+      </div>
+    #else
+      <div id="content">
+        $content
+      </div>
+    #end
+
+    <!--<div id="footer">
+      #parse("footer.vm")
+    </div>-->
+  </body>
+</html>
