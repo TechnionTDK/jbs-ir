@@ -11,3 +11,9 @@ the repository contains the following:
 
 for more information go to the wiki page of the repository 
 
+##installing and configuring solr jbs - search (linux)
+1. use the following guide to install solr on your machine: [solr installation guide](https://cwiki.apache.org/confluence/display/solr/Installing+Solr)
+2. from the solr directory start solr with the `bin/solr start` command
+3. check solr running using `bin/solr status` command
+4. create a new core with the `bin/solr create -c <core name> ` command, for example: `bin/solr create -c jbs-ir`
+
