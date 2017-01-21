@@ -14,20 +14,21 @@ The repository contains the following items
 
 For more information please visit the wiki page of the repository.
 
-In order to bring up the search engine on a new machine, we need to have the following components integrated
+###In order to bring up the search engine on a new machine, we need to have the following components integrated
 * Solr 
 * jbs-text repository
 * jbs-ir repository
 * HebMorph
 * Optional - Velocity UI for searching
 
-##Installing and configuring solr 
+##Solr
 ###Installing solr
-1. Follow the following guide to install solr on your machine: [solr installation guide](https://cwiki.apache.org/confluence/display/solr/Installing+Solr)
+1. Follow this guide to install solr on your machine: [solr installation guide](https://cwiki.apache.org/confluence/display/solr/Installing+Solr)
 2. From the solr directory start solr using `bin/solr start` command
-3. Validate that Solr is running using `bin/solr status` command
-4. Create a new core using `bin/solr create -c <core name>` command, for example: `bin/solr create -c jbs-ir`
+3. Make sure Solr is running using `bin/solr status` command
+4. Create a new core using `bin/solr create -c <core name>` command (for example: `bin/solr create -c jbs-ir`)
 
+###Configurating Solr
 ####Before inserting documents into the index we need to declare the fields we are going to use:
 * Before doing changes to the core files we advice you to read [Documents, Fields, and Schema Design](https://cwiki.apache.org/confluence/display/solr/Documents%2C+Fields%2C+and+Schema+Design)
 
