@@ -20,7 +20,7 @@ public class Parser {
             try {
                 printWriter = new PrintWriter(fileName);
             } catch (FileNotFoundException e) {
-                e.printStackTrace();
+                System.out.println("Error creating the following file: " + fileName);
             }
             assert printWriter != null;
             printWriter.println(jsonString);
@@ -35,6 +35,7 @@ public class Parser {
             try {
                 fileReader = new FileReader(file);
             } catch (FileNotFoundException e) {
+                System.out.println("Error creating fileReader for: " + file.getName());
                 e.printStackTrace();
             }
             JSONParser parser = new JSONParser();
@@ -42,6 +43,7 @@ public class Parser {
             try {
                 obj = parser.parse(fileReader);
             } catch (ParseException | IOException e) {
+                System.out.println("Error parsing " + file.getName());
                 e.printStackTrace();
             }
             JSONObject jsonObject = (JSONObject) obj;
