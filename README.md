@@ -25,9 +25,11 @@ For more information please visit the wiki page of the repository.
 ##Solr
 ###Installing Solr
 1. Follow this guide to install solr on your machine: [solr installation guide](https://cwiki.apache.org/confluence/display/solr/Installing+Solr)
-2. From the solr directory start solr using `bin/solr start` command
-3. Make sure Solr is running using `bin/solr status` command
-4. Create a new core using `bin/solr create -c <core-name>` command (for example: `bin/solr create -c jbs-ir`)
+2. From the solr directory start solr using `bin/solr start` command, this will start the Solr server in the background listening on port 8983
+3. Make sure Solr is running using `bin/solr status` command, to check Solr started correctly
+4. Create a new core using `bin/solr create -c <core-name>` command (for example: `bin/solr create -c jbs-ir`), for better understanding of what is a core in Solr visit [Solr Cores and solr.xml](https://cwiki.apache.org/confluence/display/solr/Solr+Cores+and+solr.xml)
+
+* Solr can support multiple cores, each core cand be adrresed by sending request to the solr server and adding the the core name for example: http://tdk2.cs.technion.ac.il:8983/solr/jbs-ir, where http://tdk2.cs.technion.ac.il:8983 - Solr server and jbs-ir - Solr core)
 
 ###Configurating Solr
 ####Before indexing documents with Solr, we need to configurate the fields we are going to use
@@ -35,6 +37,7 @@ Before modifying Solr core files we advise you to read [Documents, Fields, and S
 
 * In the `server/solr/<core-name>/conf` directory replace the `managed-schema` file with the one in the repository under `Solr configuration files` directory
 * In the `server/solr/<core-name>/conf` directory replace the `solrconfig.xml` file with the one in the repository under `Solr configuration files` directory
+* Restart Solr by running the `bin/solr restart` command from the solr directory
 
 ##HebMorph
 ####The text in the index will be in Hebrew, so we need to use an appropriate hebrew analyzer
@@ -42,7 +45,9 @@ We encourage you to read this wiki to have better understanding of the changes y
 
 We chose to use the HebMorph hewbrew analyzer: [Hebmorph github repository](https://github.com/synhershko/HebMorph).
 
-To integrate HebMorph into your Solr core follow [SOLR-README.md](https://github.com/synhershko/HebMorph/blob/master/SOLR-README.md) in Hebmorph github repository. Please note there is no need to change `managed-schema` and `solrconfig.xml` as we prepared them in advance and they were copied in the last section.
+To integrate HebMorph into your Solr core follow [SOLR-README.md](https://github.com/synhershko/HebMorph/blob/master/SOLR-README.md) in Hebmorph github repository. Please note there is no need to change `managed-schema` and `solrconfig.xml` as we prepared them in advance and they were copied in the last section ( **if you decided to use the files in the repository, you have to place the HebMorph .jar file inside the `server` directory** )
+
+in the following link the HebMorph .jar file can be found: [Hebmorph Lucene Maven](https://mvnrepository.com/artifact/com.code972.hebmorph/hebmorph-lucene/6.0.0)
 * **Please note that if you are using Solr 6, HebMorph-6.x.x is required**
 
 ##Indexing documents from jbs-text using jbs-ir
