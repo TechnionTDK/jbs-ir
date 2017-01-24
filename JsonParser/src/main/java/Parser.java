@@ -35,7 +35,7 @@ public class Parser {
             try {
                 fileReader = new FileReader(file);
             } catch (FileNotFoundException e) {
-                System.out.println("Error creating fileReader for: " + file.getName());
+                System.out.println("Error creating fileReader for: " + file.getAbsolutePath());
                 e.printStackTrace();
             }
             JSONParser parser = new JSONParser();
@@ -43,7 +43,7 @@ public class Parser {
             try {
                 obj = parser.parse(fileReader);
             } catch (ParseException | IOException e) {
-                System.out.println("Error parsing " + file.getName());
+                System.out.println("Error parsing " + file.getAbsolutePath());
                 e.printStackTrace();
             }
             JSONObject jsonObject = (JSONObject) obj;
