@@ -44,7 +44,7 @@ public class Parser {
                 obj = parser.parse(fileReader);
             } catch (ParseException | IOException e) {
                 System.out.println("Error parsing " + file.getAbsolutePath());
-                e.printStackTrace();
+                continue;
             }
             JSONObject jsonObject = (JSONObject) obj;
             splitJSONArrayToFiles(jsonObject, outputDirectory);
