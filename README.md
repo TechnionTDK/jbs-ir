@@ -73,14 +73,20 @@ In order to index the relevant documents with Solr, please follow the next steps
 
 ##Admin UI
 You can use the Solr Admin UI for running queries, analysis and viewing core details. Please visit [Overview of the Solr Admin UI](https://cwiki.apache.org/confluence/display/solr/Overview+of+the+Solr+Admin+UI) for more information.
+
 You can access the Admin UI at: `http://<machine-name>:<Solr-port>`. 
+
 To access a specific core: `http://<machine-name>:<Solr-port>/#/<core-name>`.
+
 You can read about the most useful features we found in the Admin UI here****.
 
 ##Velocity UI for searching
 There is a basic UI for searching which you can access at: `http://<machine-name>:<Solr-port>/solr/<core-name>/browse`.
+
 We wanted to make some adjusments to that UI so it will present the data in a more friendly way.
+
 Solr use Velocity for their web UIs, so we worked on top of the example files under `<solr-home-dir>/example/files/conf/velocity`.
+
 To read more about Velocity, go to [The Apache Velocity Project](http://velocity.apache.org/).
 
 ###To get the Velocity web UI we configured
