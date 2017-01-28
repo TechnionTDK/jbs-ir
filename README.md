@@ -13,8 +13,6 @@ The repository contains the following items
 * A java test tool for the IR engine evaluation
 * Instructions and documentation for bringing up the search engine on a new machine
 
-For more information please visit the wiki page of the repository.
-
 ###In order to bring up the search engine on a new machine, we need to have the following components integrated
 * Solr 
 * jbs-text repository
@@ -25,16 +23,21 @@ For more information please visit the wiki page of the repository.
 ##Solr
 ###Installing Solr
 1. Follow this guide to install solr on your machine: [solr installation guide](https://cwiki.apache.org/confluence/display/solr/Installing+Solr)
-2. From the solr directory start solr using `bin/solr start` command, this will start the Solr server in the background listening on port 8983
+2. From the solr directory start solr using `bin/solr start` command. This will start the Solr server in the background listening for requestes on port 8983
 3. Make sure Solr is running using `bin/solr status` command, to check Solr started correctly
-4. Create a new core using `bin/solr create -c <core-name>` command (for example: `bin/solr create -c jbs-ir`), for better understanding of what is a core in Solr visit [Solr Cores and solr.xml](https://cwiki.apache.org/confluence/display/solr/Solr+Cores+and+solr.xml)
+4. Create a new [core](https://cwiki.apache.org/confluence/display/solr/Solr+Cores+and+solr.xml) using `bin/solr create -c <core-name>` command (for example: `bin/solr create -c jbs-ir`)
 
-* Solr can support multiple cores, each core cand be adrresed by sending request to the solr server and adding the the core name for example: http://tdk2.cs.technion.ac.il:8983/solr/jbs-ir, where http://tdk2.cs.technion.ac.il:8983 - Solr server and jbs-ir - Solr core)
+Solr supports multiple cores under one Solr instance. 
+Each core can be addressed by adding the the core name to Solr URL: `http://<machine-name>:<Solr-port>/solr/<core-name>`.
+For example: http://tdk2.cs.technion.ac.il:8983/solr/jbs-ir.
 
-###Configurating Solr
-####Before indexing documents with Solr, we need to configurate the fields we are going to use
-Before modifying Solr core files we advise you to read [Documents, Fields, and Schema Design](https://cwiki.apache.org/confluence/display/solr/Documents%2C+Fields%2C+and+Schema+Design).
+###Configuring Solr
+####Before indexing documents with Solr, we need to tell Solr what kind of data we would like to search, store and analyze in our documents and how.
+Before modifying Solr core files, we also advise you to read [Documents, Fields, and Schema Design](https://cwiki.apache.org/confluence/display/solr/Documents%2C+Fields%2C+and+Schema+Design).
 
+In this section you will replace two core files that we modified, to understand what changes have been made - visit [this Wiki page](https://github.com/TechnionTDK/jbs-ir/wiki/Changes-in-managed-schema-and-solrconfig.xml).
+
+####Instructions
 * In the `server/solr/<core-name>/conf` directory replace the `managed-schema` file with the one in the repository under `Solr configuration files` directory
 * In the `server/solr/<core-name>/conf` directory replace the `solrconfig.xml` file with the one in the repository under `Solr configuration files` directory
 * Restart Solr by running the `bin/solr restart` command from the solr directory
@@ -45,10 +48,13 @@ We encourage you to read this wiki to have better understanding of the changes y
 
 We chose to use the HebMorph hewbrew analyzer: [Hebmorph github repository](https://github.com/synhershko/HebMorph).
 
-To integrate HebMorph into your Solr core follow [SOLR-README.md](https://github.com/synhershko/HebMorph/blob/master/SOLR-README.md) in Hebmorph github repository. Please note there is no need to change `managed-schema` and `solrconfig.xml` as we prepared them in advance and they were copied in the last section ( **if you choose to use the files in the repository, you have to place the HebMorph .jar file inside the `server` directory** )
+To integrate HebMorph into your Solr core follow [SOLR-README.md](https://github.com/synhershko/HebMorph/blob/master/SOLR-README.md) in Hebmorph github repository. 
 
-in the following link the HebMorph .jar file can be found: [Hebmorph Lucene Maven](https://mvnrepository.com/artifact/com.code972.hebmorph/hebmorph-lucene/6.0.0)
-* **Please note that if you are using Solr 6, HebMorph-6.x.x is required**
+####Some notes
+* Download the latest HebMorph .jar file from [Hebmorph Lucene Maven](https://mvnrepository.com/artifact/com.code972.hebmorph/hebmorph-lucene/6.0.0)
+* If you are using Solr 6, HebMorph-6.x.x is required
+* There is no need to change `managed-schema` and `solrconfig.xml` as we prepared them in advance and they were copied in the last section
+* If you used the `solrconfig.xml` from this repository, please place the HebMorph .jar file under `server` directory
 
 ##Indexing documents from jbs-text using jbs-ir
 In order to index the relevant documents with Solr, please follow the next steps
@@ -60,7 +66,7 @@ In order to index the relevant documents with Solr, please follow the next steps
 * Go back to Solr home directory and run: `cp jbs-ir/JsonParser/target/JsonParser-1.0-jar-with-dependencies.jar .` 
 * In order to parse the data from jbs-text into documents run:
  * `java -jar JsonParser-1.0-jar-with-dependencies.jar <path-to-desired-data-directory> <path-to-output-documents-directory>`
- * (For example: Java -jar JsonParser-1.0-jar-with-dependencies.jar jbs-text/old/tanach-json/ documentsForIndexing)
+ * (For example: Java -jar JsonParser-1.0-jar-with-dependencies.jar jbs-text/ documentsForIndexing)
 * To index the documents run: `bin/post -c <core-name> <path-to-output-documents-directory>`
 
 ##Velocity UI for searching
