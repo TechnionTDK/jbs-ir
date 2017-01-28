@@ -35,7 +35,8 @@ For example: http://tdk2.cs.technion.ac.il:8983/solr/jbs-ir.
 ####Before indexing documents with Solr, we need to tell Solr what kind of data we would like to search, store and analyze in our documents and how.
 Before modifying Solr core files, we also advise you to read [Documents, Fields, and Schema Design](https://cwiki.apache.org/confluence/display/solr/Documents%2C+Fields%2C+and+Schema+Design).
 
-In this section you will replace two core files that we modified, to understand what changes have been made - visit [this Wiki page](https://github.com/TechnionTDK/jbs-ir/wiki/Changes-in-managed-schema-and-solrconfig.xml).
+In this section you will replace two default core files with ones that we modified. 
+To understand what changes have been applied to the files, or to learn how to index additional fields in your documents - visit [this Wiki page](https://github.com/TechnionTDK/jbs-ir/wiki/Changes-in-managed-schema-and-solrconfig.xml).
 
 ####Instructions
 * In the `server/solr/<core-name>/conf` directory replace the `managed-schema` file with the one in the repository under `Solr configuration files` directory
@@ -57,6 +58,7 @@ To integrate HebMorph into your Solr core follow [SOLR-README.md](https://github
 * If you used the `solrconfig.xml` from this repository, please place the HebMorph .jar file under `server` directory
 
 ##Indexing documents from jbs-text using jbs-ir
+Indexing is done according to `managed-schema` file we discussed before.
 In order to index the relevant documents with Solr, please follow the next steps
 * Go to your Solr home directory and run these commands:
  * git clone https://github.com/TechnionTDK/jbs-ir.git
@@ -69,14 +71,22 @@ In order to index the relevant documents with Solr, please follow the next steps
  * (For example: Java -jar JsonParser-1.0-jar-with-dependencies.jar jbs-text/ documentsForIndexing)
 * To index the documents run: `bin/post -c <core-name> <path-to-output-documents-directory>`
 
-##Velocity UI for searching
+##Admin UI
 You can use the Solr Admin UI for running queries, analysis and viewing core details. Please visit [Overview of the Solr Admin UI](https://cwiki.apache.org/confluence/display/solr/Overview+of+the+Solr+Admin+UI) for more information.
+You can access the Admin UI at: `http://<machine-name>:<Solr-port>`. 
+To access a specific core: `http://<machine-name>:<Solr-port>/#/<core-name>`.
+You can read about the most useful features we found in the Admin UI here****.
 
-If you wish for a more simplified UI, dedicated for allowing users to run queries, you are welcome to use the Velocity user UI we designed.
+##Velocity UI for searching
+There is a basic UI for searching which you can access at: `http://<machine-name>:<Solr-port>/solr/<core-name>/browse`.
+We wanted to make some adjusments to that UI so it will present the data in a more friendly way.
+Solr use Velocity for their web UIs, so we worked on top of the example files under `<solr-home-dir>/example/files/conf/velocity`.
 To read more about Velocity, go to [The Apache Velocity Project](http://velocity.apache.org/).
-###Using our Velocity web UI
+
+###To get the Velocity web UI we configured
 * Copy `velocity` under `Solr configuration files` to `server/solr/<core-name>/conf` directory
 * Copy `browse-resources` under `Solr configuration files` to `server/solr/<core-name>/conf` directory
+* Run `bin\solr restart` from Solr home directory for the changes to apply
 * Access the UI at: `http://<machine-name>:<Solr-port>/solr/<core-name>/browse`
  * For example: http://tdk2.cs.technion.ac.il:8983/solr/jbs-ir/browse
 
