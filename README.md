@@ -79,7 +79,7 @@ You can access the Admin UI at: `http://<machine-name>:<Solr-port>`.
 
 To access a specific core: `http://<machine-name>:<Solr-port>/#/<core-name>`.
 
-You can read about the most useful features we found in the Admin UI here****.
+You can read about the most useful features we found in the Admin UI in [Useful Admin UI Features](https://github.com/TechnionTDK/jbs-ir/wiki/Useful-Admin-UI-Features).
 
 ##Velocity UI for searching
 There is a basic UI for searching which you can access at: `http://<machine-name>:<Solr-port>/solr/<core-name>/browse`.
