@@ -844,7 +844,7 @@
 
   <initParams path="/update/**,/query,/select,/tvrh,/elevate,/spell,/browse">
     <lst name="defaults">
-      <str name="df">text</str>
+      <str name="df">jbo_text</str>
     </lst>
   </initParams>
 

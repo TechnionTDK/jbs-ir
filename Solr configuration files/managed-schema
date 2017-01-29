@@ -403,14 +403,15 @@
   <fieldType name="tlongs" class="solr.TrieLongField" positionIncrementGap="0" docValues="true" multiValued="true" precisionStep="8"/>
   <field name="_root_" type="string" docValues="false" indexed="true" stored="false"/>
   <field name="_version_" type="long" indexed="false" stored="false"/>
-  <field name="interprets" type="strings" indexed="false" stored="false" docValues="false"/>
-  <field name="parasha" type="strings" indexed="false" stored="false" docValues="false"/>
-  <field name="perek" type="strings" indexed="false" stored="false" docValues="false"/>
-  <field name="positionInParasha" type="tlongs" indexed="false" stored="false" docValues="false"/>
-  <field name="positionInPerek" type="tlongs" indexed="false" stored="false" docValues="false"/>
-  <field name="sefer" type="strings" indexed="false" stored="false" docValues="false"/>
-  <field name="text" type="text_hebrew"/>
+  <field name="interprets" type="strings" docValues="false" indexed="false" stored="false"/>
+  <field name="parasha" type="strings" docValues="false" indexed="false" stored="false"/>
+  <field name="perek" type="strings" docValues="false" indexed="false" stored="false"/>
+  <field name="positionInParasha" type="tlongs" docValues="false" indexed="false" stored="false"/>
+  <field name="positionInPerek" type="tlongs" docValues="false" indexed="false" stored="false"/>
+  <field name="rdfs_label" type="strings"/>
+  <field name="jbo_sefer" type="strings" docValues="false" indexed="false" stored="false"/>
+  <field name="jbo_text" type="text_hebrew"/>
   <field name="titles.title" type="strings" indexed="false" stored="false"/>
+  <field name="jbo_textNikud" type="strings" indexed="false" stored="false"/>
   <field name="uri" type="string" multiValued="false" indexed="true" required="true" stored="true"/>
-
 </schema>
