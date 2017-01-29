@@ -22,8 +22,8 @@ The repository contains the following items
 
 ##Solr
 ###Installing Solr
-1. Follow this guide to install solr on your machine: [solr installation guide](https://cwiki.apache.org/confluence/display/solr/Installing+Solr)
-2. From the solr directory start solr using `bin/solr start` command. This will start the Solr server in the background listening for requestes on port 8983
+1. Follow this guide to install Solr on your machine: [Solr installation guide](https://cwiki.apache.org/confluence/display/solr/Installing+Solr)
+2. From the Solr directory start Solr using `bin/solr start` command. This will start the Solr server in the background listening for requestes on port 8983
 3. Make sure Solr is running using `bin/solr status` command, to check Solr started correctly
 4. Create a new [core](https://cwiki.apache.org/confluence/display/solr/Solr+Cores+and+solr.xml) using `bin/solr create -c <core-name>` command (for example: `bin/solr create -c jbs-ir`)
 
