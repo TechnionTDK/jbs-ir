@@ -92,7 +92,7 @@ To read more about Velocity, go to [The Apache Velocity Project](http://velocity
 
 ###To get the Velocity web UI we configured
 * Copy `velocity` under `Solr configuration files` to `server/solr/<core-name>/conf` directory
-* Copy `browse-resources` under `Solr configuration files` to `server/solr/<core-name>/conf` directory
+* Copy `browse-resources` under `Solr configuration files` to `server` directory
 * Run `bin\solr restart` from Solr home directory for the changes to apply
 * Access the UI at: `http://<machine-name>:<Solr-port>/solr/<core-name>/browse`
  * For example: http://tdk2.cs.technion.ac.il:8983/solr/jbs-ir/browse
