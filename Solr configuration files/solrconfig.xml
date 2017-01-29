@@ -83,7 +83,7 @@
 
   <lib dir="${solr.install.dir:../../../..}/contrib/velocity/lib" regex=".*\.jar" />
   <!-- browse-resources must come before solr-velocity JAR in order to override localized resources -->
-  <lib path="${solr.install.dir:../../../..}/server/solr/jbs-ir/conf/browse-resources"/>
+  <lib path="${solr.install.dir:../../../..}/server/browse-resources"/>
   <lib dir="${solr.install.dir:../../../..}/dist/" regex="solr-velocity-\d.*\.jar" />
   <!-- an exact 'path' can be used instead of a 'dir' to specify a 
        specific jar file.  This will cause a serious error to be logged 
