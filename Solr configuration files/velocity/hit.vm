@@ -6,10 +6,17 @@
 
 
 ## Text
-#if($doc.getFieldValue('text'))
-  #set($text = $doc.getFirstValue('text'))
+#if($doc.getFieldValue('jbo_text'))
+  #set($text = $doc.getFirstValue('jbo_text'))
 #else
   #set($text = "no text")
+#end
+
+## Title
+#if($doc.getFieldValue('rdfs_label'))
+  #set($title = $doc.getFirstValue('rdfs_label'))
+#else
+  #set($title = "")
 #end
 
 
@@ -29,8 +36,8 @@
 #end
 
 <div class="result-document">
-  <span class="result-text">
-    <!--<img src="#{url_root}/img/filetypes/${filetype}.png" align="center">-->
+  <span class="result-text">	
+    <b><u>$title</u></b><br><br>
     <b>$text</b>
   </span>
 
