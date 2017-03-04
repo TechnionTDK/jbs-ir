@@ -70,7 +70,12 @@ In order to index the relevant documents with Solr, please follow the next steps
  * `java -jar JsonParser-1.0-jar-with-dependencies.jar <path-to-desired-data-directory> <path-to-output-documents-directory>`
  * (For example: Java -jar JsonParser-1.0-jar-with-dependencies.jar jbs-text/ documentsForIndexing)
  * JsonParser converts the .json files in `<path-to-desired-data-directory>` (recursively) and proccesses them into multiple .json files, where each .json file contains one JSON object. These new .json files are placed into `<path-to-output-documents-directory>`
+* If you wish to update an existing index, you should delete the current documents first
+ * Delete the current index using the following command from Solr home directory in the terminal:
+   `http://<machine-name>:<Solr-port>/solr/<core-name>/update?stream.body=<delete><query>*:*</query></delete>&commit=true`
 * To index the documents run: `bin/post -c <core-name> <path-to-output-documents-directory>`
+
+ 
 
 ##Admin UI
 You can use the Solr Admin UI for running queries, analysis and viewing core details. Please visit [Overview of the Solr Admin UI](https://cwiki.apache.org/confluence/display/solr/Overview+of+the+Solr+Admin+UI) for more information.
