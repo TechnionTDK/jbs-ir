@@ -16,6 +16,7 @@ public class Parser {
             JSONObject jsonObject = (JSONObject) aJsonArray;
             String jsonString = jsonObject.toJSONString();
             PrintWriter printWriter = null;
+            if (jsonObject.get("uri") == null) continue;
             String fileName = outputDirectory + "/" + jsonObject.get("uri") + ".json";
             try {
                 printWriter = new PrintWriter(fileName);
