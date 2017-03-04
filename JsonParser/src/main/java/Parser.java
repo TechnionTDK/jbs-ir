@@ -68,10 +68,23 @@ public class Parser {
 
     }
 
+
+
     private void createOutputDirectory(String outputDirectory)
     {
         final File file = new File(outputDirectory);
         file.mkdir();
+    }
+
+    private void deleteDirectoryAndContent(File directory)
+    {
+        String[] files = directory.list();
+        for(String file: files)
+        {
+            File currentFile = new File(directory.getPath(),file);
+            currentFile.delete();
+        }
+        directory.delete();
     }
 
     public static void main(String[] args)
@@ -85,11 +98,11 @@ public class Parser {
         String outputDirectory = args[1];
         Parser parser = new Parser();
         File f = new File(outputDirectory);
-        if (!f.isDirectory())
+        if (f.isDirectory())
         {
-            parser.createOutputDirectory(outputDirectory);
+            parser.deleteDirectoryAndContent(f);
         }
-
+        parser.createOutputDirectory(outputDirectory);
         ArrayList<File> files = new ArrayList<>();
         parser.getListOfFiles(inputDirectory, files);
         parser.parseListOfJSONObjects(files, outputDirectory);
