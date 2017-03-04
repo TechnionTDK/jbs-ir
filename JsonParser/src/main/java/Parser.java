@@ -43,7 +43,6 @@ public class Parser {
             try {
                 obj = parser.parse(fileReader);
             } catch (ParseException | IOException e) {
-                System.out.println("Error parsing " + file.getAbsolutePath());
                 continue;
             }
             JSONObject jsonObject = (JSONObject) obj;
