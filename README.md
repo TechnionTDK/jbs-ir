@@ -39,6 +39,7 @@ In this section you will replace two default core files with ones that we modifi
 To understand what changes have been applied to the files, or to learn how to index additional fields in your documents - visit [this Wiki page](https://github.com/TechnionTDK/jbs-ir/wiki/Changes-in-managed-schema-and-solrconfig.xml).
 
 ####Instructions
+* Clone this repository to your machine: `git clone https://github.com/TechnionTDK/jbs-ir.git`
 * In the `server/solr/<core-name>/conf` directory replace the `managed-schema` file with the one in the repository under `Solr configuration files` directory
 * In the `server/solr/<core-name>/conf` directory replace the `solrconfig.xml` file with the one in the repository under `Solr configuration files` directory
 * Restart Solr by running the `bin/solr restart` command from the solr directory
@@ -61,8 +62,8 @@ To integrate HebMorph into your Solr core follow [SOLR-README.md](https://github
 Indexing is done according to `managed-schema` file we discussed before.
 In order to index the relevant documents with Solr, please follow the next steps
 * Go to your Solr home directory and run these commands:
- * git clone https://github.com/TechnionTDK/jbs-ir.git
- * git clone https://github.com/TechnionTDK/jbs-text.git
+ * git clone https://github.com/TechnionTDK/jbs-ir.git (use git pull if you cloned the repository before)
+ * git clone https://github.com/TechnionTDK/jbs-text.git (use git pull if you cloned the repository before)
 * Go to `jbs-ir` directory and create .jar for the JsonParser in jbs-ir using `mvn package` command
  * JsonParser-1.0-jar-with-dependencies.jar will be located in jbs-ir/JsonParser/target/ 
 * Go back to Solr home directory and run: `cp jbs-ir/JsonParser/target/JsonParser-1.0-jar-with-dependencies.jar .` 
