@@ -72,6 +72,7 @@ In order to index the relevant documents with Solr, please follow the next steps
  * JsonParser converts the .json files in `<path-to-desired-data-directory>` (recursively) and proccesses them into multiple .json files, where each .json file contains one JSON object. These new .json files are placed into `<path-to-output-documents-directory>`
 * If you wish to update an existing index, you should delete the current documents first
  * Delete the current index using the following command from Solr home directory in the terminal:
+   
    `http://<machine-name>:<Solr-port>/solr/<core-name>/update?stream.body=<delete><query>*:*</query></delete>&commit=true`
 * To index the documents run: `bin/post -c <core-name> <path-to-output-documents-directory>`
 
