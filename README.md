@@ -57,6 +57,7 @@ To integrate HebMorph into your Solr core follow [SOLR-README.md](https://github
 * If you are using Solr 6, HebMorph-6.x.x is required
 * There is no need to change `managed-schema` and `solrconfig.xml` as we prepared them in advance and they were copied in the last section
 * If you used the `solrconfig.xml` from this repository, please place the HebMorph .jar file under `server` directory
+* In `SOLR-README.md`, note that `instanceDir` refers to `server` directory in our case
 
 ##Indexing documents from jbs-text using jbs-ir
 Indexing is done according to `managed-schema` file we discussed before.
