@@ -55,7 +55,7 @@ To integrate HebMorph into your Solr core follow [SOLR-README.md](https://github
 ####Some notes
 * Download the latest HebMorph .jar file from [Hebmorph Lucene in Maven repository](https://mvnrepository.com/artifact/com.code972.hebmorph/hebmorph-lucene/6.0.0)
 * If you are using Solr 6, HebMorph-6.x.x is required
-* There is no need to change `managed-schema` and `solrconfig.xml` as we prepared them in advance and they were copied in the last section
+* There is no need to change `managed-schema` and `solrconfig.xml` as explained in `SOLR-README.md`, because we prepared them in advance and they were copied in the last section
 * If you used the `solrconfig.xml` from this repository, please place the HebMorph .jar file under `server` directory
 * In `SOLR-README.md`, note that `instanceDir` refers to `server` directory in our case
 
