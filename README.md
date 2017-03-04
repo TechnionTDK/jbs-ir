@@ -39,6 +39,7 @@ In this section you will replace two default core files with ones that we modifi
 To understand what changes have been applied to the files, or to learn how to index additional fields in your documents - visit [this Wiki page](https://github.com/TechnionTDK/jbs-ir/wiki/Changes-in-managed-schema-and-solrconfig.xml).
 
 ####Instructions
+* Clone this repository to your machine: `git clone https://github.com/TechnionTDK/jbs-ir.git`
 * In the `server/solr/<core-name>/conf` directory replace the `managed-schema` file with the one in the repository under `Solr configuration files` directory
 * In the `server/solr/<core-name>/conf` directory replace the `solrconfig.xml` file with the one in the repository under `Solr configuration files` directory
 * Restart Solr by running the `bin/solr restart` command from the solr directory
@@ -54,15 +55,16 @@ To integrate HebMorph into your Solr core follow [SOLR-README.md](https://github
 ####Some notes
 * Download the latest HebMorph .jar file from [Hebmorph Lucene in Maven repository](https://mvnrepository.com/artifact/com.code972.hebmorph/hebmorph-lucene/6.0.0)
 * If you are using Solr 6, HebMorph-6.x.x is required
-* There is no need to change `managed-schema` and `solrconfig.xml` as we prepared them in advance and they were copied in the last section
+* There is no need to change `managed-schema` and `solrconfig.xml` as explained in `SOLR-README.md`, because we prepared them in advance and they were copied in the last section
 * If you used the `solrconfig.xml` from this repository, please place the HebMorph .jar file under `server` directory
+* In `SOLR-README.md`, note that `instanceDir` refers to `server` directory in our case
 
 ##Indexing documents from jbs-text using jbs-ir
 Indexing is done according to `managed-schema` file we discussed before.
 In order to index the relevant documents with Solr, please follow the next steps
 * Go to your Solr home directory and run these commands:
- * git clone https://github.com/TechnionTDK/jbs-ir.git
- * git clone https://github.com/TechnionTDK/jbs-text.git
+ * git clone https://github.com/TechnionTDK/jbs-ir.git (use git pull if you cloned the repository before)
+ * git clone https://github.com/TechnionTDK/jbs-text.git (use git pull if you cloned the repository before)
 * Go to `jbs-ir` directory and create .jar for the JsonParser in jbs-ir using `mvn package` command
  * JsonParser-1.0-jar-with-dependencies.jar will be located in jbs-ir/JsonParser/target/ 
 * Go back to Solr home directory and run: `cp jbs-ir/JsonParser/target/JsonParser-1.0-jar-with-dependencies.jar .` 
@@ -70,7 +72,13 @@ In order to index the relevant documents with Solr, please follow the next steps
  * `java -jar JsonParser-1.0-jar-with-dependencies.jar <path-to-desired-data-directory> <path-to-output-documents-directory>`
  * (For example: Java -jar JsonParser-1.0-jar-with-dependencies.jar jbs-text/ documentsForIndexing)
  * JsonParser converts the .json files in `<path-to-desired-data-directory>` (recursively) and proccesses them into multiple .json files, where each .json file contains one JSON object. These new .json files are placed into `<path-to-output-documents-directory>`
+* If you wish to update an existing index, you should delete the current documents first
+ * Delete the current index using the following command from Solr home directory in the terminal:
+   
+   `http://<machine-name>:<Solr-port>/solr/<core-name>/update?stream.body=<delete><query>*:*</query></delete>&commit=true`
 * To index the documents run: `bin/post -c <core-name> <path-to-output-documents-directory>`
+
+ 
 
 ##Admin UI
 You can use the Solr Admin UI for running queries, analysis and viewing core details. Please visit [Overview of the Solr Admin UI](https://cwiki.apache.org/confluence/display/solr/Overview+of+the+Solr+Admin+UI) for more information.
