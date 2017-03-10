@@ -108,9 +108,9 @@ To read more about Velocity, go to [The Apache Velocity Project](http://velocity
 ##Evaluation tool
 We included an evaluation tool for the Solr search engine.
 The tool allows the user to automate the evaluation of the engine and extract any required data by:
-1. Setting desired parameters (e.g. query, number of documents to retrieve)
-2. Asking for debug information for the retrieved documents (more about debug information: [Debugging Solr](https://wiki.apache.org/solr/CommonQueryParameters#Debugging))
-3. Enabling the "explain other" options - allows the user to get debug information for a specific document, even if this document is not in the retrieved results
+* Setting desired parameters (e.g. query, number of documents to retrieve)
+* Asking for debug information for the retrieved documents (more about debug information: [Debugging Solr](https://wiki.apache.org/solr/CommonQueryParameters#Debugging))
+* Enabling the "explain other" options - allows the user to get debug information for a specific document, even if this document is not in the retrieved results
 
 In order to use the tool (after cloning this repository) take a look at `execute()` method in `JbsIrTestTool.java` class, this method demonstrates how the tool can be used.
 
