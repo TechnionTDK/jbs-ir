@@ -99,14 +99,18 @@ Solr use Velocity for their web UIs, so we worked on top of the example files un
 To read more about Velocity, go to [The Apache Velocity Project](http://velocity.apache.org/).
 
 ###To get the Velocity web UI we configured
-* Copy `velocity` under `Solr configuration files` to `server/solr/<core-name>/conf` directory
+* Copy `velocity` under `Solr configuration files` in this repository to `server/solr/<core-name>/conf` directory on your machinec
 * Copy `browse-resources` under `Solr configuration files` to `server` directory
-* Run `bin\solr restart` from Solr home directory for the changes to apply
+* Run `bin/solr restart` from Solr home directory for the changes to apply
 * Access the UI at: `http://<machine-name>:<Solr-port>/solr/<core-name>/browse`
  * For example: http://tdk2.cs.technion.ac.il:8983/solr/jbs-ir/browse
 
 ##Evaluation tool
-We included an evaluation tool for the solr search engine.
+We included an evaluation tool for the Solr search engine.
+The tool allows the user to automate the evaluation of the engine and extract any required data by:
+* Setting desired parameters (e.g. query, number of documents to retrieve)
+* Asking for debug information for the retrieved documents (more about debug information: [Debugging Solr](https://wiki.apache.org/solr/CommonQueryParameters#Debugging))
+* Enabling the "explain other" options - allows the user to get debug information for a specific document, even if this document is not in the retrieved results
 
 In order to use the tool (after cloning this repository) take a look at `execute()` method in `JbsIrTestTool.java` class, this method demonstrates how the tool can be used.
 
