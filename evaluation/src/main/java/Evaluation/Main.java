@@ -4,6 +4,11 @@ public class Main
 {
     public static void main (String[] args)
     {
+        if(args.length == 0)
+        {
+            System.out.println("Please specify the Solr core URL in the following format:\nhttp://<machine-name>:<Solr-port>/solr/<core-name>");
+            return;
+        }
         String connectionString = args[0];
         if(connectionString != null && !connectionString.isEmpty())
         {
@@ -12,7 +17,7 @@ public class Main
         }
         else
         {
-            System.out.println("Please specify the Solr core URL");
+            System.out.println("Please specify the Solr core URL in the following format:\nhttp://<machine-name>:<Solr-port>/solr/<core-name>");
         }
     }
 }

@@ -35,20 +35,20 @@ class JbsIrTestTool
     void execute()
     {
         Scanner reader = new Scanner(System.in);
-        System.out.println("enter query");
-        String query = reader.next();
+        System.out.println("Enter query");
+        String query = reader.nextLine();
         jbsIrQuery.setNewQuery(query);
-        System.out.println("set number of retrieved documents: ");
+        System.out.println("Set number of documents to retrieve: ");
         int numOfDocuments = reader.nextInt();
         jbsIrQuery.setNumberOfRetrivedDocuments(numOfDocuments);
-        System.out.println("would you like debug info? y or n ");
+        System.out.println("Would you like debug info? y or n ");
         String isDenugInfo = reader.next();
         if(isDenugInfo.equals("y"))
         {
             debugFlag = true;
             jbsIrQuery.askForDebugInfo();
-            System.out.println("enter sefer-perek-pasuk format if you want to examine of perushim as part of debug info\n" +
-                    "for a specific perush enter the name of the document otherwise enter \"n\"");
+            System.out.println("Enter <sefer-perek-pasuk> if you want to examine all documents which contain this substring in their uri, as part of debug info\n" +
+                    "for a specific perush enter the name of the document, otherwise enter \"n\"");
             String explainOtherString = reader.next();
             if(explainOtherString.matches("\\d+-\\d+-\\d+"))
             {
@@ -83,7 +83,7 @@ class JbsIrTestTool
         try {
             jbsIrQueryResult.PrintResultsToFile();
         } catch (IOException e) {
-            System.out.println("printing results failed");
+            System.out.println("Printing results failed");
             e.printStackTrace();
         }
 
@@ -106,11 +106,11 @@ class JbsIrTestTool
             }
         }
 
-        System.out.println("do you want to check if specific documents are in the results list? y or n");
+        System.out.println("Do you want to check if specific documents are in the results list? y or n");
         String isCheckInResults = reader.next();
         if(isCheckInResults.equals("y"))
         {
-            System.out.println("enter list of documents seperated by \",\"");
+            System.out.println("Enter a list of documents separated by \",\"");
             String documentsString = reader.next();
             String[] documentsArray = documentsString.split(",");
             for(String doc : documentsArray)
