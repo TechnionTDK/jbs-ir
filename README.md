@@ -66,16 +66,16 @@ In order to index the relevant documents with Solr, please follow the next steps
   * `git clone https://github.com/TechnionTDK/jbs-ir.git` (use git pull if you cloned the repository before)
   * `git clone https://github.com/TechnionTDK/jbs-text.git` (use git pull if you cloned the repository before)
 * Go to `jbs-ir` directory and create .jar for the JsonParser in jbs-ir using `mvn package` command
-  * JsonParser-1.0-jar-with-dependencies.jar will be located in jbs-ir/JsonParser/target/ 
+  * `JsonParser-1.0-jar-with-dependencies.jar` will be located in `jbs-ir/JsonParser/target/` 
 * Go back to Solr home directory and run: `cp jbs-ir/JsonParser/target/JsonParser-1.0-jar-with-dependencies.jar .` 
 * In order to parse the data from jbs-text into documents run:
   * `java -jar JsonParser-1.0-jar-with-dependencies.jar <path-to-desired-data-directory> <path-to-output-documents-directory>`
   * (For example: Java -jar JsonParser-1.0-jar-with-dependencies.jar jbs-text/ documentsForIndexing)
-  * JsonParser converts the .json files in `<path-to-desired-data-directory>` (recursively) and proccesses them into multiple .json files, where each .json file contains one JSON object. These new .json files are placed into `<path-to-output-documents-directory>`
+  * JsonParser converts the .json files in `<path-to-desired-data-directory>` (recursively) and proccesses them into multiple .json files, where each .json file contains one JSON object. These new .json files are placed into `<path-to-output-documents-directory>`.
 * If you wish to update an existing index, you should delete the current documents first
   * Delete the current index using the following command from Solr home directory in the terminal:
    
-   `http://<machine-name>:<Solr-port>/solr/<core-name>/update?stream.body=<delete><query>*:*</query></delete>&commit=true`
+    `http://<machine-name>:<Solr-port>/solr/<core-name>/update?stream.body=<delete><query>*:*</query></delete>&commit=true`
 * To index the documents run: `bin/post -c <core-name> <path-to-output-documents-directory>`
 
  
