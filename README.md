@@ -60,6 +60,7 @@ To integrate HebMorph into your Solr core follow [SOLR-README.md](https://github
 * In `SOLR-README.md`, note that `instanceDir` refers to `server` directory in our case
 
 ## Indexing documents from jbs-text using jbs-ir
+* If you wish to update an existing index, follow the instructions in [Updating Solr Index](https://github.com/TechnionTDK/jbs-ir/wiki/Updating-Solr-Index)
 Indexing is done according to `managed-schema` file we discussed before.
 In order to index the relevant documents with Solr, please follow the next steps
 * Go to your Solr home directory and run these commands:
@@ -72,10 +73,6 @@ In order to index the relevant documents with Solr, please follow the next steps
   * `java -jar JsonParser-1.0-jar-with-dependencies.jar <path-to-desired-data-directory> <path-to-output-documents-directory>`
   * (For example: Java -jar JsonParser-1.0-jar-with-dependencies.jar jbs-text/ documentsForIndexing)
   * JsonParser converts the .json files in `<path-to-desired-data-directory>` (recursively) and proccesses them into multiple .json files, where each .json file contains one JSON object. These new .json files are placed into `<path-to-output-documents-directory>`.
-* If you wish to update an existing index, you should delete the current documents first
-  * Delete the current index using the following command from Solr home directory in the terminal:
-   
-    `http://<machine-name>:<Solr-port>/solr/<core-name>/update?stream.body=<delete><query>*:*</query></delete>&commit=true`
 * To index the documents run: `bin/post -c <core-name> <path-to-output-documents-directory>`
 
  
