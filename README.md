@@ -63,17 +63,17 @@ To integrate HebMorph into your Solr core follow [SOLR-README.md](https://github
 Indexing is done according to `managed-schema` file we discussed before.
 In order to index the relevant documents with Solr, please follow the next steps
 * Go to your Solr home directory and run these commands:
- * `git clone https://github.com/TechnionTDK/jbs-ir.git` (use git pull if you cloned the repository before)
- * `git clone https://github.com/TechnionTDK/jbs-text.git` (use git pull if you cloned the repository before)
+  * `git clone https://github.com/TechnionTDK/jbs-ir.git` (use git pull if you cloned the repository before)
+  * `git clone https://github.com/TechnionTDK/jbs-text.git` (use git pull if you cloned the repository before)
 * Go to `jbs-ir` directory and create .jar for the JsonParser in jbs-ir using `mvn package` command
- * JsonParser-1.0-jar-with-dependencies.jar will be located in jbs-ir/JsonParser/target/ 
+  * JsonParser-1.0-jar-with-dependencies.jar will be located in jbs-ir/JsonParser/target/ 
 * Go back to Solr home directory and run: `cp jbs-ir/JsonParser/target/JsonParser-1.0-jar-with-dependencies.jar .` 
 * In order to parse the data from jbs-text into documents run:
- * `java -jar JsonParser-1.0-jar-with-dependencies.jar <path-to-desired-data-directory> <path-to-output-documents-directory>`
- * (For example: Java -jar JsonParser-1.0-jar-with-dependencies.jar jbs-text/ documentsForIndexing)
- * JsonParser converts the .json files in `<path-to-desired-data-directory>` (recursively) and proccesses them into multiple .json files, where each .json file contains one JSON object. These new .json files are placed into `<path-to-output-documents-directory>`
+  * `java -jar JsonParser-1.0-jar-with-dependencies.jar <path-to-desired-data-directory> <path-to-output-documents-directory>`
+  * (For example: Java -jar JsonParser-1.0-jar-with-dependencies.jar jbs-text/ documentsForIndexing)
+  * JsonParser converts the .json files in `<path-to-desired-data-directory>` (recursively) and proccesses them into multiple .json files, where each .json file contains one JSON object. These new .json files are placed into `<path-to-output-documents-directory>`
 * If you wish to update an existing index, you should delete the current documents first
- * Delete the current index using the following command from Solr home directory in the terminal:
+  * Delete the current index using the following command from Solr home directory in the terminal:
    
    `http://<machine-name>:<Solr-port>/solr/<core-name>/update?stream.body=<delete><query>*:*</query></delete>&commit=true`
 * To index the documents run: `bin/post -c <core-name> <path-to-output-documents-directory>`
@@ -103,7 +103,7 @@ To read more about Velocity, go to [The Apache Velocity Project](http://velocity
 * Copy `browse-resources` under `Solr configuration files` to `server` directory
 * Run `bin/solr restart` from Solr home directory for the changes to apply
 * Access the UI at: `http://<machine-name>:<Solr-port>/solr/<core-name>/browse`
- * For example: http://tdk2.cs.technion.ac.il:8983/solr/jbs-ir/browse
+  * For example: http://tdk2.cs.technion.ac.il:8983/solr/jbs-ir/browse
 
 ## Evaluation tool
 We included an evaluation tool for the Solr search engine.
@@ -120,4 +120,4 @@ If you want to use the tool in it's default configuration, after running the `mv
 
 1. The .jar can be found in `jbs-ir/evaluation/target/evaluation-1.0-jar-with-dependencies.jar`
 2. Run: `java -jar evaluation-1.0-jar-with-dependencies.jar http://<machine-name>:<Solr-port>/solr/<core-name>`
- * For example: java -jar evaluation-1.0-jar-with-dependencies.jar http://tdk2.cs.technion.ac.il:8983/solr/jbs-ir
+   * For example: java -jar evaluation-1.0-jar-with-dependencies.jar http://tdk2.cs.technion.ac.il:8983/solr/jbs-ir
