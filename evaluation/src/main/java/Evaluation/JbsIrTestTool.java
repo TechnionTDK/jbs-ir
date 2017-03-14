@@ -47,8 +47,8 @@ class JbsIrTestTool
         {
             debugFlag = true;
             jbsIrQuery.askForDebugInfo();
-            System.out.println("Enter <sefer-perek-pasuk> if you want to examine all documents which contain this substring in their uri, as part of debug info\n" +
-                    "for a specific perush enter the name of the document, otherwise enter \"n\"");
+            System.out.println("Enter <sefer-perek-pasuk> if you want to examine all documents which \ncontain this substring in their uri.\n" +
+                    "For a specific perush enter the name of the document, otherwise enter \"n\"");
             String explainOtherString = reader.next();
             if(explainOtherString.matches("\\d+-\\d+-\\d+"))
             {
