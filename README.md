@@ -1,8 +1,27 @@
-# jbs-ir
+# An Information Retrieval System For The Jewish Bookshelf Project 
 
-## A Solr based search engine for the Jewish Bookshelf project 
+## Introduction
+This project is a part of the Jewish Bookshelf ecosystem in the Technion Data and Knowledge Lab.
 
-The repository contains the following items
+It integrates several COTS projects in order to create a search engine for JBS data.
+The data is pulled from [jbs-text](https://github.com/TechnionTDK/jbs-text) repository, which contains JSON objects that describe the JBS data.
+
+### The COTSs which are integrated as part of the search engine
+* [Apache Solr](http://lucene.apache.org/solr/)
+* [HebMorph](https://github.com/synhershko/HebMorph) Hebrew analyzer
+* [Apache Velocity](http://velocity.apache.org/) for the web application
+
+### We also deliver two tools for administrators
+* [JSON parser]()
+* [Evaluation tool]()
+
+### In this README you will learn
+* How to install the system from scratch on a new machine
+* How to update the serach engine's index when jbs-text is updated
+* How to use the administration tools
+
+
+## Repository content
 
 * Solr configuration files
   * Velocity UI for searching
@@ -12,6 +31,8 @@ The repository contains the following items
 * JSON parser to convert data from `jbs-text` repository to documents for Solr
 * A java test tool for the IR engine evaluation
 * Instructions and documentation for bringing up the search engine on a new machine
+
+## Installation
 
 ### In order to bring up the search engine on a new machine, we need to have the following components integrated
 * Solr 
