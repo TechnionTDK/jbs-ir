@@ -137,8 +137,9 @@ In order to use the tool (after cloning this repository) take a look at `execute
 
 * **Note that the tool expects to receive the URL to the core of your Solr engine as an argument**
 
-If you want to use the tool in it's default configuration, after running the `mvn package` command, do the following:
+* Note: because the terminal (linux) and Command Prompt (windows) don't support Hebrew, it's better to run the application from a work envoirment (such as Ecllipse, Intellij etc)
 
+In case you changed the code and want to create a .jar file after running the `mvn package` command, do the following:
 1. The .jar can be found in `jbs-ir/evaluation/target/evaluation-1.0-jar-with-dependencies.jar`
 2. Run: `java -jar evaluation-1.0-jar-with-dependencies.jar http://<machine-name>:<Solr-port>/solr/<core-name>`
    * For example: java -jar evaluation-1.0-jar-with-dependencies.jar http://tdk2.cs.technion.ac.il:8983/solr/jbs-ir
