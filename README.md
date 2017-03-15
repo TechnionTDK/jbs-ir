@@ -135,10 +135,14 @@ The tool allows the user to automate the evaluation of the engine and extract an
 
 In order to use the tool (after cloning this repository) take a look at `execute()` method in `JbsIrTestTool.java` class, this method demonstrates how the tool can be used.
 
-* **Note that the tool expects to receive the URL to the core of your Solr engine as an argument**
+* **Note:** that the tool expects to receive the URL to the core of your Solr engine as an argument
 
-* Note: because the terminal (linux) and Command Prompt (windows) don't support Hebrew, it's better to run the application from a work envoirment (such as Ecllipse, Intellij etc)
+* **Note:** because the terminal (Linux) and Command Prompt (Windows) don't support Hebrew text, it's better to run the application from a work envoirment such as IntelliJ IDEA 
 
+### When running from IntelliJ IDEA (or other IDE)
+Before running the Main method in the IDE, you have to configure `Program Arguments` in **Run/Debug configurations** to contain your Solr core address in this format: `http://<machine-name>:<Solr-port>/solr/<core-name>`.
+
+### When running from command line
 In case you changed the code and want to create a .jar file after running the `mvn package` command, do the following:
 1. The .jar can be found in `jbs-ir/evaluation/target/evaluation-1.0-jar-with-dependencies.jar`
 2. Run: `java -jar evaluation-1.0-jar-with-dependencies.jar http://<machine-name>:<Solr-port>/solr/<core-name>`
