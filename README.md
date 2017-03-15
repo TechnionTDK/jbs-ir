@@ -1,4 +1,4 @@
-# An Information Retrieval System For The Jewish Bookshelf Project 
+# Information Retrieval System For The Jewish Bookshelf Project 
 
 ## Introduction
 This project is a part of the Jewish Bookshelf ecosystem in the Technion Data and Knowledge Lab.
@@ -100,7 +100,6 @@ In order to index the relevant documents with Solr, please follow the next steps
 * To index the documents run: `bin/post -c <core-name> <path-to-output-documents-directory>`
 
  
-
 ## Admin UI
 You can use the Solr Admin UI for running queries, analysis and viewing core details. Please visit [Overview of the Solr Admin UI](https://cwiki.apache.org/confluence/display/solr/Overview+of+the+Solr+Admin+UI) for more information.
 
