@@ -12,8 +12,8 @@ The data is pulled from [jbs-text](https://github.com/TechnionTDK/jbs-text) repo
 * [Apache Velocity](http://velocity.apache.org/) for the web application
 
 ### We also deliver two tools for administrators
-* [JSON parser]()
-* [Evaluation tool]()
+* [JSON parser](https://github.com/TechnionTDK/jbs-ir/blob/master/README.md#indexing-documents-from-jbs-text-using-jbs-ir)
+* [Evaluation tool](https://github.com/TechnionTDK/jbs-ir/blob/master/README.md#evaluation-tool)
 
 ### In this README you will learn
 * How to install the system from scratch on a new machine
