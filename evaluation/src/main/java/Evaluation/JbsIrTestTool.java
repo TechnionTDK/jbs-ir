@@ -42,23 +42,19 @@ class JbsIrTestTool
         int numOfDocuments = reader.nextInt();
         jbsIrQuery.setNumberOfRetrivedDocuments(numOfDocuments);
         System.out.println("Would you like debug info? y or n ");
-        String isDenugInfo = reader.next();
-        if(isDenugInfo.equals("y"))
+        String isDebugInfo = reader.next();
+        if(isDebugInfo.equals("y"))
         {
             debugFlag = true;
             jbsIrQuery.askForDebugInfo();
-            System.out.println("Enter <sefer-perek-pasuk> if you want to examine all documents which \ncontain this substring in their uri.\n" +
-                    "For a specific perush enter the name of the document, otherwise enter \"n\"");
-            String explainOtherString = reader.next();
-            if(explainOtherString.matches("\\d+-\\d+-\\d+"))
+            System.out.println("Would you like to examine specific documents (regardless of their rank)? y or n");
+            String isExplainOther = reader.next();
+            if (isExplainOther.equals("y"))
             {
+                System.out.println("Enter a substring of the uri group you wish to examine");
+                String subStringUri = reader.next();
                 explainOtherFlag = true;
-                jbsIrQuery.askForExplainOther("*-" + explainOtherString);
-            }
-            else if(!explainOtherString.equals("n") && !StringUtils.isEmpty(explainOtherString))
-            {
-                explainOtherFlag = true;
-                jbsIrQuery.askForExplainOther(explainOtherString);
+                jbsIrQuery.askForExplainOther("*" + subStringUri + "*");
             }
         }
 
