@@ -71,15 +71,14 @@ We encourage you to read this wiki to have better understanding of the changes y
 
 We chose to use the HebMorph hewbrew analyzer: [Hebmorph github repository](https://github.com/synhershko/HebMorph).
 
-To integrate HebMorph into your Solr core follow [SOLR-README.md](https://github.com/synhershko/HebMorph/blob/master/SOLR-README.md) in Hebmorph github repository, while keeping in mind the notes below.
-Finally, restart Solr by running the `bin/solr restart` command from the solr directory.
+To integrate HebMorph into your Solr core follow [SOLR-README.md](https://github.com/synhershko/HebMorph/blob/master/SOLR-README.md) in Hebmorph github repository. We provide here practical integration guidelines that should suffice:
 
-#### Some notes
-* Download the latest HebMorph .jar file from [Hebmorph Lucene in Maven repository](https://mvnrepository.com/artifact/com.code972.hebmorph/hebmorph-lucene/6.0.0)
-* If you are using Solr 6, HebMorph-6.x.x is required
+* Download the latest HebMorph.jar file from [Hebmorph Lucene in Maven repository](https://mvnrepository.com/artifact/com.code972.hebmorph/hebmorph-lucene/6.0.0)
+* If you are using Solr 6, HebMorph-6.x.x is required.
 * There is no need to change `managed-schema` and `solrconfig.xml` as explained in `SOLR-README.md`, because we prepared them in advance and they were copied in the last section
-* If you used the `solrconfig.xml` from this repository, please place the HebMorph .jar file under `server` directory
-* In `SOLR-README.md`, note that `instanceDir` refers to `server` directory in our case
+* If you used the `solrconfig.xml` from this repository, please place the HebMorph .jar file under `server` directory (in `SOLR-README.md`, note that `instanceDir` refers to `server` directory in our case).
+* Clone the HebMorph repository and copy the folder hspell-data-files under server.
+* Finally, restart Solr by running the `bin/solr restart` command from the solr directory.
 
 ## Indexing documents from jbs-text using jbs-ir
 * If you wish to update an existing index, follow the instructions in [Updating Solr Index](https://github.com/TechnionTDK/jbs-ir/wiki/Updating-Solr-Index)
