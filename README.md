@@ -93,7 +93,7 @@ In order to index the relevant documents with Solr, please follow the next steps
 * Go back to Solr home directory and run: `cp jbs-ir/JsonParser/target/JsonParser-1.0-jar-with-dependencies.jar .` 
 * In order to parse the data from jbs-text into documents run:
   * `java -jar JsonParser-1.0-jar-with-dependencies.jar <path-to-desired-data-directory> <path-to-output-documents-directory>`
-  * (For example: Java -jar JsonParser-1.0-jar-with-dependencies.jar jbs-text/ documentsForIndexing)
+  * (For example: java -jar JsonParser-1.0-jar-with-dependencies.jar jbs-text/ documentsForIndexing)
   * JsonParser converts the .json files in `<path-to-desired-data-directory>` (recursively) and proccesses them into multiple .json files, where each .json file contains one JSON object. These new .json files are placed into `<path-to-output-documents-directory>`.
 * Restart Solr by running the `bin/solr restart` command from the solr directory
 * To index the documents run: `bin/post -c <core-name> <path-to-output-documents-directory>`
