@@ -6,7 +6,7 @@
     </div>
     <!--<input type="image" class="displayed" src="#{url_for_solr}/admin/file?file=/velocity/img/ic_search_black_24dp_2x.png&contentType=image/png" alt="Submit" width="35"     height="35"/>-->
     <div id="debug_query" class="debug">
-      <span id="parsed_query">$esc.html($response.response.debug.parsedquery)</span>
+      <!--<span id="parsed_query">$esc.html($response.response.debug.parsedquery)</span>-->
     </div>
 
     <input type="hidden" name="type" value="#current_type"/>
