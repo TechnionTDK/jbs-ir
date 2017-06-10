@@ -36,26 +36,31 @@
 #end
 
 <div class="result-document">
-  <span class="result-text">	
+  <!-- <span class="result-text">	
     <b><u>$title</u></b><br><br>
-    <b>$text</b>
-  </span>
+    <b>$newText</b>
+  </span> -->
 
   <div class="uri">
     $docId </br>
   </div>
 
-  #set($pad = "")
-  #foreach($v in $response.response.highlighting.get($docId).get("content"))
-    $pad$esc.html($v).replace("HL_START","<em>").replace("HL_END","</em>")
+
+ <span class="result-text">
+   <b><u>$title</u></b><br><br>
+    #set($pad = "")
+  #foreach($v in $response.response.highlighting.get($docId).get("jbo_text"))
+    ##$pad$esc.html($v).replace("HL_START","<em>").replace("HL_END","</em>")
+     <b>$pad$v</b>
     #set($pad = " ... ")
   #end
+ </span>
 
 </div>
 
 <a href="#" class="debug" onclick='jQuery(this).next().toggle(); return false;'>toggle explain</a>
-<pre style="display: none;">
-    $esc.html($response.getExplainMap().get($doc.getFirstValue('id')))
+<pre class="debug-info" style="display: none;">
+    <span class="debug-info">$esc.html($response.getExplainMap().get($doc.getFirstValue('uri')))</span>
 </pre>
 
 <a href="#" class="debug" onclick='jQuery(this).next().toggle(); return false;'>show all fields</a>
@@ -63,6 +68,11 @@
   #foreach($fieldname in $doc.fieldNames)
     <span>$fieldname :</span>
     <span>#foreach($value in $doc.getFieldValues($fieldname))$esc.html($value)#end</span>
+  #end
+  #set($query = $request.params.get('q'))
+  #set($queryList = $query.split(" "))
+  #foreach($queryWord in $queryList)
+   <span>$queryWord</span>
   #end
 </pre>
 
