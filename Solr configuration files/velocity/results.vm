@@ -2,7 +2,7 @@
   #parse("facets.vm")
 </div>-->
 
-#if($request.params.get('q').trim() != "")
+#if($!request.params.get('q').trim())
 <div id="results_list">
   <div class="pagination">
     <span class="results-found">$page.results_found</span> $resource.results_found_in.insert(${response.responseHeader.QTime})
