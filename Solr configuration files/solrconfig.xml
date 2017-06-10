@@ -835,10 +835,16 @@
   <requestHandler name="/browse" class="solr.SearchHandler" useParams="query,facets,velocity,browse">
     <lst name="defaults">
       <str name="echoParams">explicit</str>
-      <!--<str name="wt">velocity</str>-->
-      <!--<str name="v.template">browse</str>-->S
-      <!--<str name="v.layout">layout</str>-->
-      <!--<str name="title">Jewish Bookshelf Search</str>-->
+      <str name="wt">velocity</str>
+      <str name="v.template">browse</str>
+      <str name="v.layout">layout</str>
+      <str name="title">Jewish Bookshelf Search</str>
+      <str name="hl">on</str>
+      <str name="hl.fl">jbo_text</str>
+      <str name="hl.snippets">1000</str>
+      <str name="hl.fragsize">0</str>
+      <str name="debugQuery">on</str>
+      <str name="debug.explain.structured">false</str>	
     </lst>
   </requestHandler>
 
