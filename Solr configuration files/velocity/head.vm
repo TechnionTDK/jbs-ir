@@ -91,7 +91,7 @@
     position: relative;
   }
 
-  .debug { display: none; font-size: 10pt}
+  .debug { display: inline; font-size: 10pt}
   #debug_query {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 10pt;
@@ -203,6 +203,9 @@
   }
   .result-document:nth-child(2n+1) {
     background-color: #FFFFFD;
+  }
+  .debug-info {
+   text-align: left
   }
  
 
