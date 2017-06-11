@@ -115,6 +115,8 @@ We wanted to make some adjusments to that UI so it will present the data in a mo
 
 Solr uses Velocity for their web UIs, so we worked on top of the example files under `<solr-home-dir>/example/files/conf/velocity`.
 
+For more information about the files we changed to configure the UI read the following wiki page: (Useful Velocity files)[https://github.com/TechnionTDK/jbs-ir/wiki/Useful-Velocity-files]
+
 To read more about Velocity, go to [The Apache Velocity Project](http://velocity.apache.org/).
 
 ### Get the Velocity web UI we configured
